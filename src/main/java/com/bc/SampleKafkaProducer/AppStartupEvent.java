@@ -7,6 +7,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.kafka.core.KafkaTemplate;
 
+import java.util.Date;
+
 @Component
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent> {
 
@@ -15,14 +17,15 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
 
     @Scheduled(cron = "*/1 * * * *")
     public void produce() {
-        kafkaProducerService.sendMessage("kafka message");
+        String d = new Date().toString();
+        kafkaProducerService.sendMessage("kafka message sent at " + d);
     }
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         System.out.println("APPLICATION STARTUP EVENT");
-
-        kafkaProducerService.sendMessage("kafka message");
+        String d = new Date().toString();
+        kafkaProducerService.sendMessage("kafka message sent at " + d);
 
         produce();
     }
