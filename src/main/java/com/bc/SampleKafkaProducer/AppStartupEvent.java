@@ -10,22 +10,18 @@ import org.springframework.kafka.core.KafkaTemplate;
 @Component
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent> {
 
+    private KafkaProducerService kafkaProducerService;
 
-//    @Autowired
-//    KafkaTemplate<String, String> kafkaTemplate;
-//
-//    String TOPIC = "health";
-//    String message = "everything is O.K.";
-//
-//    @Scheduled(cron = "*/3 * * * *")
-//    public void produce() {
-//        kafkaTemplate.send(TOPIC, message);
-//    }
+
+    @Scheduled(cron = "*/3 * * * *")
+    public void produce() {
+        kafkaProducerService.sendMessage("kafka message");
+    }
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         System.out.println("APPLICATION STARTUP EVENT");
 
-        //produce();
+        produce();
     }
 }

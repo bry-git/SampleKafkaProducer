@@ -13,8 +13,7 @@ public class KafkaProducerService {
 
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String message)
-    {
+    public void sendMessage(String message) {
         logger.info(String.format("Message sent -> %s", message));
         this.kafkaTemplate.send(AppConstants.TOPIC_NAME, message);
     }
