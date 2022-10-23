@@ -13,7 +13,7 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
     private KafkaProducerService kafkaProducerService;
 
 
-    @Scheduled(cron = "*/3 * * * *")
+    @Scheduled(cron = "*/1 * * * *")
     public void produce() {
         kafkaProducerService.sendMessage("kafka message");
     }
@@ -21,6 +21,8 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         System.out.println("APPLICATION STARTUP EVENT");
+
+        kafkaProducerService.sendMessage("kafka message");
 
         produce();
     }
