@@ -37,7 +37,7 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
      * the @SpringBootApplication annotation. The scheduled method does not need to be invoked anywhere
      * */
 
-    @Scheduled(cron = "*/1 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void produce() {
         long d = new Date().getTime();
         sendMessage("hello world " + d);
