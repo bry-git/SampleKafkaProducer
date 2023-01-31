@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   kafka:
-    bootstrap-servers: 172.25.0.3:29092 #${BOOTSTRAP_SERVER}
+    bootstrap-servers: ${BOOTSTRAP_SERVER}
     topic:
       name: ${KAFKA_TOPIC}
     producer:
