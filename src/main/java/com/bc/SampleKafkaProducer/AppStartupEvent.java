@@ -20,9 +20,8 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
 
     public AppStartupEvent() {}
 
-//    @Value(value = "${spring.kafka.topic.name}")
-//    private String kafkaTopic;
-    private String kafkaTopic = "primary";
+    @Value(value = "${spring.kafka.topic.name}")
+    private String kafkaTopic;
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

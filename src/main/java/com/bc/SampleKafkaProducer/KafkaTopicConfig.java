@@ -20,13 +20,11 @@ import java.util.Map;
 @Configuration
 public class KafkaTopicConfig {
 
-//    @Value(value = "${spring.kafka.bootstrap-servers}")
-//    private String bootstrapAddress;
-    private String bootstrapAddress = "kafka:9092";
+    @Value(value = "${spring.kafka.bootstrap-servers}")
+    private String bootstrapAddress;
 
-//    @Value(value = "${spring.kafka.topic.name}")
-//    private String kafkaTopic;
-    private String kafkaTopic = "primary";
+    @Value(value = "${spring.kafka.topic.name}")
+    private String kafkaTopic;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
